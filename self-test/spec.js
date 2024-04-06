@@ -1,13 +1,13 @@
 // spec.js
 describe('Assignment 2 Testing',  function() {
-    it('should have a title',  function() {
+    it('should have a title',  async function() {
       browser.ignoreSynchronization = true;
-      browser.get('https://www.globalsqa.com/angularJs-protractor/ConsumptionCalculator/');
+      await browser.get('https://www.globalsqa.com/angularJs-protractor/ConsumptionCalculator/');
       expect(browser.getTitle()).toEqual('Consumption Calculator');
     });
     it('should tell mg of caffeine, warning text and display [unable to load] picture after exceed 400 mg of caffeine', async function(){
       browser.ignoreSynchronization = true;
-      browser.get('https://www.globalsqa.com/angularJs-protractor/ConsumptionCalculator/');
+      await browser.get('https://www.globalsqa.com/angularJs-protractor/ConsumptionCalculator/');
       console.log("\nBefore Sending keys\n");
 
       await element(by.css("form.ng-scope:nth-child(2) > div:nth-child(2) > img:nth-child(4)")).isDisplayed().then(function(showed){
@@ -45,9 +45,10 @@ describe('Assignment 2 Testing',  function() {
       console.log("\n");
       browser.sleep(1500);
     });
+    
     it('should tell mg of tar, warning text and display no smoking picture after exceed 30 mg of tar',async function(){
       browser.ignoreSynchronization = true;
-      browser.get('https://www.globalsqa.com/angularJs-protractor/ConsumptionCalculator/');
+      await browser.get('https://www.globalsqa.com/angularJs-protractor/ConsumptionCalculator/');
 
       console.log("\nBefore Sendkeys\n");
 
@@ -83,6 +84,10 @@ describe('Assignment 2 Testing',  function() {
         expect(showed).toBe(true);
       });//should show picture after tar >= 30 mg
       console.log("\n");
+
+      // await element(by.xpath("/html/body/form[2]/div/p[3]")).getText().then(function(text){
+      //   console.log("Testing XPath method text ",text);
+      // });
       browser.sleep(1500);
     });
 
